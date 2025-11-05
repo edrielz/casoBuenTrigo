@@ -2,10 +2,10 @@
 
 El sistema incluye usuarios predefinidos para testing:
 
-Usuario	Contraseña	Rol
-panadero	panadero123	Panadero
-encargado	inventario123	Encargado de Inventario
-admin	admin123	Administrador
+Usuario/Contraseña/Rol
+[panadero,	panadero123,	Panadero]
+[encargado,	inventario123,	Encargado de Inventario]
+[admin,	admin123,	Administrador]
 
 # Manual de Usuario - Panadería El Buen Trigo
 
