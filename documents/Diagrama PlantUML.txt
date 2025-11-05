@@ -1,0 +1,150 @@
+@startuml
+!theme plain
+
+package "Modelo" {
+    class Usuario {
+        - nombre: string
+        - tipo: string
+        + login(): bool
+        + getTipo(): string
+    }
+
+    class Panadero {
+        + registrarReceta()
+        + modificarReceta()
+        + eliminarReceta()
+        + registrarProduccion()
+        + consultarStockPanes()
+    }
+
+    class EncargadoInventario {
+        + registrarIngrediente()
+        + editarIngrediente()
+        + eliminarIngrediente()
+        + consultarInventario()
+        + verAlertas()
+    }
+
+    class Administrador {
+        + generarReporte()
+        + exportarReporte()
+        + controlGlobal()
+    }
+
+    class Ingrediente {
+        - nombre: string
+        - cantidad: double
+        - unidad: string
+        - nivelMinimo: double
+        + getNombre(): string
+        + getCantidad(): double
+        + setCantidad(double): void
+        + verificarAlerta(): bool
+    }
+
+    class Receta {
+        - nombrePan: string
+        - ingredientes: map<Ingrediente*, double>
+        + agregarIngrediente(Ingrediente*, double): void
+        + modificarIngrediente(Ingrediente*, double): void
+        + eliminarIngrediente(Ingrediente*): void
+        + calcularIngredientesNecesarios(int): map<Ingrediente*, double>
+    }
+
+    class Pan {
+        - tipo: string
+        - cantidad: int
+        + getTipo(): string
+        + getCantidad(): int
+        + setCantidad(int): void
+    }
+
+    class Inventario {
+        - ingredientes: vector<Ingrediente*>
+        - panes: vector<Pan*>
+        + agregarIngrediente(Ingrediente*): void
+        + buscarIngrediente(string): Ingrediente*
+        + actualizarStockPan(string, int): void
+        + verificarDisponibilidad(Receta*, int): bool
+        + consumirIngredientes(Receta*, int): bool
+        + generarAlertas(): vector<string>
+    }
+
+    Usuario <|-- Panadero
+    Usuario <|-- EncargadoInventario
+    Usuario <|-- Administrador
+}
+
+package "Controlador" {
+    class ControladorRecetas {
+        - inventario: Inventario*
+        + crearReceta(string): Receta*
+        + modificarReceta(Receta*, string): bool
+        + eliminarReceta(Receta*): bool
+    }
+
+    class ControladorProduccion {
+        - inventario: Inventario*
+        + producirPan(Receta*, int): bool
+        + verificarStock(Receta*, int): bool
+    }
+
+    class ControladorInventario {
+        - inventario: Inventario*
+        + agregarIngrediente(string, double, string, double): bool
+        + actualizarIngrediente(string, double): bool
+        + consultarInventario(): vector<string>
+    }
+
+    class ControladorReportes {
+        - inventario: Inventario*
+        + generarReporteInventario(): string
+        + generarReporteStock(): string
+        + exportarReporte(string): bool
+    }
+}
+
+package "Vista" {
+    class VistaPanadero {
+        + mostrarMenu(): void
+        + solicitarDatosReceta(): tuple<string, map<string, double>>
+        + mostrarRecetas(vector<Receta*>): void
+        + mostrarResultadoProduccion(bool): void
+    }
+
+    class VistaEncargadoInventario {
+        + mostrarMenu(): void
+        + solicitarDatosIngrediente(): tuple<string, double, string, double>
+        + mostrarInventario(vector<string>): void
+        + mostrarAlertas(vector<string>): void
+    }
+
+    class VistaAdministrador {
+        + mostrarMenu(): void
+        + mostrarReporteCompleto(string, string): void
+        + solicitarExportacion(): bool
+    }
+
+    class VistaLogin {
+        + solicitarCredenciales(): tuple<string, string>
+        + mostrarError(string): void
+    }
+}
+
+' Relaciones de composición/agregación
+Inventario "1" *-- "*" Ingrediente
+Inventario "1" *-- "*" Pan
+Receta "1" *-- "*" Ingrediente
+
+' Relaciones de conocimiento
+ControladorRecetas --> Inventario
+ControladorProduccion --> Inventario
+ControladorInventario --> Inventario
+ControladorReportes --> Inventario
+
+VistaPanadero --> ControladorRecetas
+VistaPanadero --> ControladorProduccion
+VistaEncargadoInventario --> ControladorInventario
+VistaAdministrador --> ControladorReportes
+
+@enduml
