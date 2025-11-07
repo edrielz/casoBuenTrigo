@@ -12,15 +12,27 @@ ControladorRecetas::~ControladorRecetas() {
     }
 }
 
-Receta* ControladorRecetas::crearReceta(string nombrePan) {
+Receta* ControladorRecetas::crearReceta(string nombrePan ,map<string, double> ingredientesSinComparar) {
     // Verificar si ya existe una receta con ese nombre
     for (auto receta : recetas) {
         if (receta->getNombrePan() == nombrePan) {
             return nullptr; // Ya existe una receta con ese nombre
         }
     }
-    
+    map<Ingrediente*, double> ingredientes;
+    for (auto& [nombre, cantidad] : ingredientesSinComparar) {
+        Ingrediente* ingrediente = inventario->buscarIngrediente(nombre);
+        if (ingrediente != nullptr) {
+            ingredientes[ingrediente] = cantidad;
+        } else {
+            return nullptr;
+        }
+    }
     Receta* nuevaReceta = new Receta(nombrePan);
+    for (auto& [ingrediente, cantidad] : ingredientes) {
+        nuevaReceta->agregarIngrediente(ingrediente, cantidad);
+    }
+    
     recetas.push_back(nuevaReceta);
     return nuevaReceta;
 }

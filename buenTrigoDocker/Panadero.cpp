@@ -62,11 +62,11 @@ void Panadero::registrarReceta() {
     string nombrePan = get<0>(datos);
     map<string, double> ingredientesMap = get<1>(datos); // separa los datos 
     
-    Receta* nuevaReceta = controladorRecetas->crearReceta(nombrePan);
+    Receta* nuevaReceta = controladorRecetas->crearReceta(nombrePan, ingredientesMap);
     if (nuevaReceta != nullptr) {
         vista.mostrarMensaje("Receta '" + nombrePan + "' registrada exitosamente.");
     } else {
-        vista.mostrarMensaje("Error: Ya existe una receta con ese nombre.");
+        vista.mostrarMensaje("Error: Ya existe una receta con ese nombre o los ingredientes no existen.");
     }
 }
 
