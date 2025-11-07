@@ -10,7 +10,7 @@ using namespace std;
 class ControladorRecetas {
 private:
     Inventario* inventario;
-    vector<Receta*> recetas;
+    vector<Receta*> recetas = {};
 
 public:
     ControladorRecetas(Inventario* inventario);

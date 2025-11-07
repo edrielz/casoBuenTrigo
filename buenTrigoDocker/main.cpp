@@ -13,63 +13,78 @@
 
 using namespace std;
 
-unique_ptr<Usuario> crearUsuario(string tipo, string nombre, string password, 
-                                Inventario* inventario) {
+unique_ptr<Usuario> crearUsuario(
+    string tipo, string nombre, string password,
+    Inventario* inventario,
+    ControladorRecetas* controladorRecetas = nullptr,
+    ControladorProduccion* controladorProduccion = nullptr
+) {
     if (tipo == "panadero") {
-        auto controladorRecetas = make_unique<ControladorRecetas>(inventario);
-        auto controladorProduccion = make_unique<ControladorProduccion>(inventario);
-        return make_unique<Panadero>(nombre, password, 
-                                   controladorRecetas.get(), 
-                                   controladorProduccion.get());
+        
+        return make_unique<Panadero>(nombre, password, controladorRecetas, controladorProduccion);
     }
     else if (tipo == "encargado") {
-        auto controladorInventario = make_unique<ControladorInventario>(inventario);
-        return make_unique<EncargadoInventario>(nombre, password, 
-                                              controladorInventario.get());
+    auto controladorInventario = new ControladorInventario(inventario);
+    return make_unique<EncargadoInventario>(nombre, password, controladorInventario);
     }
     else if (tipo == "administrador") {
-        auto controladorReportes = make_unique<ControladorReportes>(inventario);
-        return make_unique<Administrador>(nombre, password, 
-                                        controladorReportes.get());
+        auto controladorReportes = new ControladorReportes(inventario);
+        return make_unique<Administrador>(nombre, password, controladorReportes);
     }
+
+
     return nullptr;
 }
 
 int main() {
     cout << "=== SISTEMA PANADERIA EL BUEN TRIGO ===" << endl;
+
     
-    // Inicializar inventario con datos de prueba
     auto inventario = make_unique<Inventario>();
+
+    
+    auto controladorRecetas = make_unique<ControladorRecetas>(inventario.get());
+    auto controladorProduccion = make_unique<ControladorProduccion>(inventario.get());
+
+    // (Opcional) Datos de prueba del inventario
+    /*
     inventario->agregarIngrediente(new Ingrediente("Harina", 100.0, "kg", 10.0));
     inventario->agregarIngrediente(new Ingrediente("Levadura", 5.0, "kg", 1.0));
     inventario->agregarIngrediente(new Ingrediente("Azucar", 20.0, "kg", 5.0));
-    
+    */
+
     VistaLogin vistaLogin;
-    
+
     while (true) {
-        auto [usuarioInput, password] = vistaLogin.solicitarCredenciales();
         
-        // En un sistema real, esto vendría de una base de datos
+        auto [usuarioInput, password] = vistaLogin.solicitarCredenciales();
+
         string tipoUsuario = "";
         if (usuarioInput == "panadero") tipoUsuario = "panadero";
         else if (usuarioInput == "encargado") tipoUsuario = "encargado";
         else if (usuarioInput == "admin") tipoUsuario = "administrador";
+
         
-        auto usuario = crearUsuario(tipoUsuario, usuarioInput, password, inventario.get());
-        
+        auto usuario = crearUsuario(
+            tipoUsuario, usuarioInput, password,
+            inventario.get(),
+            controladorRecetas.get(),
+            controladorProduccion.get()
+        );
+
         if (usuario && usuario->login(password)) {
             cout << "Bienvenido, " << usuario->getNombre() << "!" << endl;
             usuario->mostrarMenu();
         } else {
             vistaLogin.mostrarError("Credenciales incorrectas");
         }
-        
+
         cout << "¿Desea cambiar de usuario? (s/n): ";
         char opcion;
         cin >> opcion;
         if (opcion != 's' && opcion != 'S') break;
     }
-    
+
     cout << "Gracias por usar el sistema!" << endl;
     return 0;
 }

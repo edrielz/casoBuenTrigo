@@ -3,13 +3,15 @@
 #include "ControladorRecetas.h"
 #include "ControladorProduccion.h"
 #include <iostream>
+#include <memory>
 
 using namespace std;
 
 Panadero::Panadero(string nombre, string password, 
                    ControladorRecetas* cr, ControladorProduccion* cp)
     : Usuario(nombre, "panadero", password), 
-      controladorRecetas(cr), controladorProduccion(cp) {}
+      controladorRecetas(cr), controladorProduccion(cp) {
+      }
 
 void Panadero::mostrarMenu() {
     VistaPanadero vista;
@@ -58,7 +60,7 @@ void Panadero::registrarReceta() {
     VistaPanadero vista;
     auto datos = vista.solicitarDatosReceta();
     string nombrePan = get<0>(datos);
-    map<string, double> ingredientesMap = get<1>(datos);
+    map<string, double> ingredientesMap = get<1>(datos); // separa los datos 
     
     Receta* nuevaReceta = controladorRecetas->crearReceta(nombrePan);
     if (nuevaReceta != nullptr) {
