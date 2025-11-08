@@ -14,7 +14,6 @@ public:
     
     string generarReporteInventario();
     string generarReporteStock();
-    bool exportarReporte(string nombreArchivo);
 };
 
 #endif

@@ -34,16 +34,3 @@ string ControladorReportes::generarReporteStock() {
     
     return reporte.str();
 }
-
-bool ControladorReportes::exportarReporte(string nombreArchivo) {
-    ofstream archivo(nombreArchivo);
-    if (!archivo.is_open()) {
-        return false;
-    }
-    
-    archivo << generarReporteInventario() << "\n";
-    archivo << generarReporteStock();
-    
-    archivo.close();
-    return true;
-}

@@ -5,8 +5,7 @@ void VistaAdministrador::mostrarMenu() {
     cout << "\n=== MENU ADMINISTRADOR ===" << endl;
     cout << "1. Generar reporte completo" << endl;
     cout << "2. Exportar reporte a archivo" << endl;
-    cout << "3. Control global" << endl;
-    cout << "4. Salir" << endl;
+    cout << "3. Salir" << endl;
     cout << "Seleccione una opción: ";
 }
 
@@ -20,4 +19,12 @@ bool VistaAdministrador::solicitarExportacion() {
     cout << "¿Desea exportar el reporte a un archivo? (s/n): ";
     cin >> respuesta;
     return (respuesta == 's' || respuesta == 'S');
+}
+
+void VistaAdministrador::mostrarMensaje(string mensaje) {
+    cout << "\n" << mensaje << endl;
+}
+
+void VistaAdministrador::mostrarError(string error){
+    cout <<"\n" << error <<  endl;
 }
