@@ -13,6 +13,7 @@ private:
 
 public:
     ControladorInventario(Inventario* inventario);
+    ~ControladorInventario();
     
     bool agregarIngrediente(string nombre, double cantidad, string unidad, double nivelMinimo);
     bool actualizarIngrediente(string nombre, double nuevaCantidad);

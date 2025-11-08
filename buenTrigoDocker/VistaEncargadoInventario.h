@@ -12,6 +12,9 @@ public:
     tuple<string, double, string, double> solicitarDatosIngrediente();
     void mostrarInventario(vector<string> inventario);
     void mostrarAlertas(vector<string> alertas);
+    void mostrarMensaje(string mensaje);
+    void mostrarConfirmacionEliminacion(string nombreIngrediente);
+
 };
 
 #endif

@@ -45,3 +45,12 @@ void VistaEncargadoInventario::mostrarAlertas(vector<string> alertas) {
         }
     }
 }
+
+void VistaEncargadoInventario::mostrarMensaje(string mensaje) {
+    cout << "\n" << mensaje << endl;
+}
+
+void VistaEncargadoInventario::mostrarConfirmacionEliminacion(string nombreIngrediente) {
+    cout << "\n¿Está seguro que desea eliminar el ingrediente: '" << nombreIngrediente << "'?" << endl;
+    cout << "Esta acción no se puede deshacer. (s/n): ";
+}
