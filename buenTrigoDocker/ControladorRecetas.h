@@ -17,7 +17,7 @@ public:
     ~ControladorRecetas();
     
     Receta* crearReceta(string nombrePan, map<string, double> ingredientes);
-    bool modificarReceta(Receta* receta, string nuevoNombre);
+    bool modificarReceta(Receta* receta, string nuevoNombre, map<string, double> nuevosIngredientes);
     bool eliminarReceta(Receta* receta);
     bool eliminarReceta(string nombreReceta); // Sobrecarga para buscar por nombre
     Receta* buscarReceta(string nombreReceta);

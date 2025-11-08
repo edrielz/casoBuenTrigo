@@ -79,16 +79,45 @@ void Panadero::modificarReceta() {
         return;
     }
     
+    
     vista.mostrarRecetasParaSeleccion(recetas);
     int seleccion = vista.solicitarSeleccionReceta(recetas.size());
-    
-    // Solicitar nuevo nombre para la receta
-    string nuevoNombre;
-    cout << "Nuevo nombre para la receta (actual: " << recetas[seleccion]->getNombrePan() << "): ";
+    Receta* recetaSeleccionada = recetas[seleccion];
+
+    cout << "\n¿Desea modificar el nombre, los ingredientes o ambos? (n/i/a): ";
+    char opcion;
+    cin >> opcion;
     cin.ignore();
-    getline(cin, nuevoNombre);
-    
-    if (controladorRecetas->modificarReceta(recetas[seleccion], nuevoNombre)) {
+
+    string nuevoNombre = recetaSeleccionada->getNombrePan();  // valor actual
+    map<string, double> nuevosIngredientes;
+
+    if (opcion == 'n' || opcion == 'a') {
+        cout << "Nuevo nombre del pan: ";
+        getline(cin, nuevoNombre);
+    }
+
+    if (opcion == 'i' || opcion == 'a') {
+        char agregarMas;
+        do {
+            string nombreIngrediente;
+            double cantidad;
+
+            cout << "Nombre del ingrediente: ";
+            getline(cin, nombreIngrediente);
+            cout << "Cantidad necesaria (en gramos): ";
+            cin >> cantidad;
+            cin.ignore();
+
+            nuevosIngredientes[nombreIngrediente] = cantidad;
+
+            cout << "¿Desea agregar otro ingrediente? (s/n): ";
+            cin >> agregarMas;
+            cin.ignore();
+        } while (agregarMas == 's' || agregarMas == 'S');
+    }
+
+    if (controladorRecetas->modificarReceta(recetaSeleccionada, nuevoNombre, nuevosIngredientes)) {
         vista.mostrarMensaje("Receta modificada exitosamente.");
     } else {
         vista.mostrarMensaje("Error al modificar la receta.");

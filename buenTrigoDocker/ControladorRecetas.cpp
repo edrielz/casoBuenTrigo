@@ -36,19 +36,43 @@ Receta* ControladorRecetas::crearReceta(string nombrePan ,map<string, double> in
     recetas.push_back(nuevaReceta);
     return nuevaReceta;
 }
+bool ControladorRecetas::modificarReceta(Receta* receta, string nuevoNombre, map<string, double> nuevosIngredientes) {
+    if (!receta) return false;
 
-bool ControladorRecetas::modificarReceta(Receta* receta, string nuevoNombre) {
-    if (receta == nullptr) return false;
     
-    // Verificar que el nuevo nombre no esté en uso por otra receta
-    for (auto r : recetas) {
-        if (r != receta && r->getNombrePan() == nuevoNombre) {
-            return false; // El nombre ya está en uso
+    map<string, double> ingredientesFinales;
+
+    if (nuevosIngredientes.empty()) {
+        
+        auto actuales = receta->getIngredientes(); 
+        for (auto& par : actuales) {
+            Ingrediente* iptr = par.first;
+            double cant = par.second;
+            if (iptr) {
+                ingredientesFinales[iptr->getNombre()] = cant;
+            }
         }
+    } else {
+        
+        ingredientesFinales = nuevosIngredientes;
     }
+
     
-    // En una implementación real, aquí modificaríamos los datos de la receta
-    // Por ahora, solo cambiamos el nombre
+    
+
+    
+    Receta* nueva = crearReceta(nuevoNombre+" ", ingredientesFinales); // las comillas es para que no sea el mismo nombre 
+    if (nueva==nullptr) {
+        
+        return false;
+    }
+
+    if (!eliminarReceta(receta) ) {
+        // No se pudo eliminar → abortar
+        return false;
+    }
+
+    
     return true;
 }
 

@@ -47,11 +47,11 @@ int main() {
     auto controladorProduccion = make_unique<ControladorProduccion>(inventario.get());
 
     // (Opcional) Datos de prueba del inventario
-    /*
-    inventario->agregarIngrediente(new Ingrediente("Harina", 100.0, "kg", 10.0));
-    inventario->agregarIngrediente(new Ingrediente("Levadura", 5.0, "kg", 1.0));
-    inventario->agregarIngrediente(new Ingrediente("Azucar", 20.0, "kg", 5.0));
-    */
+    
+    inventario->agregarIngrediente(new Ingrediente("Harina", 100.0, "gr", 10000.0));
+    inventario->agregarIngrediente(new Ingrediente("Levadura", 5.0, "gr", 1000.0));
+    inventario->agregarIngrediente(new Ingrediente("Azucar", 20.0, "gr", 5000.0));
+    
 
     VistaLogin vistaLogin;
 
