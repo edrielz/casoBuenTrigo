@@ -11,6 +11,10 @@ private:
     ControladorProduccion* controladorProduccion;
 
 public:
+    /**
+     *cr es el puntero al Controlador de recetas para gestionar recetas
+     *cp es el puntero al Controlador de producción para gestionar la producción y stock
+     */
     Panadero(string nombre, string password, 
              ControladorRecetas* cr, ControladorProduccion* cp);
     void mostrarMenu() override;

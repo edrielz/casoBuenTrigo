@@ -45,3 +45,13 @@ vector<string> ControladorInventario::consultarInventario() {
 vector<string> ControladorInventario::obtenerAlertas() {
     return inventario->generarAlertas();
 }
+
+bool ControladorInventario::eliminarIngrediente(string nombre) {
+    Ingrediente* ingrediente = inventario->buscarIngrediente(nombre);
+    if (ingrediente == nullptr) {
+        return false;
+    }
+
+    inventario->eliminarIngrediente(nombre);
+    return true;
+}

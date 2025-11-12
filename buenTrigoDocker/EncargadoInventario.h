@@ -12,7 +12,6 @@ public:
     EncargadoInventario(string nombre, string password, 
                        ControladorInventario* ci);
     void mostrarMenu() override;
-    
     void registrarIngrediente();
     void editarIngrediente();
     void eliminarIngrediente();

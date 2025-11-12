@@ -46,7 +46,7 @@ int main() {
     auto controladorRecetas = make_unique<ControladorRecetas>(inventario.get());
     auto controladorProduccion = make_unique<ControladorProduccion>(inventario.get());
 
-    // (Opcional) Datos de prueba del inventario
+    // Datos de prueba predeterminados para el inventario mientras se arregla el usuario "encargado" y sus funcionalidades
     
     inventario->agregarIngrediente(new Ingrediente("Harina", 100.0, "gr", 10000.0));
     inventario->agregarIngrediente(new Ingrediente("Levadura", 5.0, "gr", 1000.0));

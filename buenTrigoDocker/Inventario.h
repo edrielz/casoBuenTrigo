@@ -17,6 +17,7 @@ public:
     ~Inventario();
     
     void agregarIngrediente(Ingrediente* ingrediente);
+    void eliminarIngrediente(string nombre);
     Ingrediente* buscarIngrediente(string nombre);
     void actualizarStockPan(string tipoPan, int cantidad);
     bool verificarDisponibilidad(Receta* receta, int cantidadPanes);

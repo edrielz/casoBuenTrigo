@@ -71,6 +71,7 @@ void Panadero::registrarReceta() {
 }
 
 void Panadero::modificarReceta() {
+    // Permite seleccionar una receta y modificar su nombre e ingredientes.
     VistaPanadero vista;
     auto recetas = controladorRecetas->getRecetas();
     
@@ -125,6 +126,7 @@ void Panadero::modificarReceta() {
 }
 
 void Panadero::eliminarReceta() {
+    // Selecciona una receta y solicita confirmación antes de eliminarla.
     VistaPanadero vista;
     auto recetas = controladorRecetas->getRecetas();
     

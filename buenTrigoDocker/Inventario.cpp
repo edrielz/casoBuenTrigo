@@ -14,6 +14,16 @@ void Inventario::agregarIngrediente(Ingrediente* ingrediente) {
     ingredientes.push_back(ingrediente);
 }
 
+void Inventario::eliminarIngrediente(string nombre) {
+    for (auto it = ingredientes.begin(); it != ingredientes.end(); ++it) {
+        if ((*it)->getNombre() == nombre) {
+            delete *it;
+            ingredientes.erase(it);
+            return;
+        }
+    }
+}
+
 Ingrediente* Inventario::buscarIngrediente(string nombre) {
     for (auto ingrediente : ingredientes) {
         if (ingrediente->getNombre() == nombre) {
