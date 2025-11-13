@@ -1,0 +1,34 @@
+{
+    "ingredientes": [
+        {
+            "cantidad": 10000.0,
+            "nivelMinimo": 88.0,
+            "nombre": "Harina",
+            "unidad": "gr"
+        },
+        {
+            "cantidad": 1000.0,
+            "nivelMinimo": 5.0,
+            "nombre": "Levadura",
+            "unidad": "gr"
+        },
+        {
+            "cantidad": 5000.0,
+            "nivelMinimo": 20.0,
+            "nombre": "Azucar",
+            "unidad": "gr"
+        },
+        {
+            "cantidad": 1.0,
+            "nivelMinimo": 123.0,
+            "nombre": "Mayonesa",
+            "unidad": "gr"
+        }
+    ],
+    "panes": [
+        {
+            "cantidad": 1,
+            "tipo": "pan"
+        }
+    ]
+}
