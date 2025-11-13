@@ -48,9 +48,9 @@ int main() {
 
     // Datos de prueba predeterminados para el inventario mientras se arregla el usuario "encargado" y sus funcionalidades
     
-    inventario->agregarIngrediente(new Ingrediente("Harina", 100.0, "gr", 10000.0));
-    inventario->agregarIngrediente(new Ingrediente("Levadura", 5.0, "gr", 1000.0));
-    inventario->agregarIngrediente(new Ingrediente("Azucar", 20.0, "gr", 5000.0));
+    if(!inventario->cargarDatosJson()){
+       std::cout<<"No Se pudo cargar el archivo "<< std::endl ;
+    }
     
 
     VistaLogin vistaLogin;

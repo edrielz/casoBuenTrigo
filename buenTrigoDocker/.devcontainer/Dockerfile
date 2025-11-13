@@ -7,7 +7,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 # instalar herramientas C++ + debugging + librerías
 RUN apt-get update \
- && apt-get install -y --no-install-recommends \
+ && apt-get install -y --no-install-recommends\ 
+    
     git \
     build-essential \
     gdb \

@@ -25,6 +25,13 @@ public:
     vector<string> generarAlertas();
     vector<Ingrediente*> getIngredientes();
     vector<Pan*> getPanes();
+
+    //Inventario opciones de guardado 
+
+    bool guardarDatosJson(); // recibe lo que va a guardar de parametro 
+
+    bool cargarDatosJson();// carga los datos en el objeto
+    
 };
 
 #endif
