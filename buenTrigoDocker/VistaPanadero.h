@@ -7,6 +7,20 @@
 #include <map>
 #include <tuple>
 using namespace std;
+/*=========================================================================================================
+                                      Documentacion CRC - VistaPanadero
+===========================================================================================================
+Clase: 
+    VistaPanadero
+Responsabilidades:
+    - Mostrar menús, recetas, resultados de producción y stock al Panadero.
+    - Proveer métodos para solicitar datos de recetas y producción al usuario.
+Colaboradores:
+    -ControladorRecetas
+    -ControladorProduccion
+----------------------------------------------------------------------------------------------------------
+
+*/
 
 class VistaPanadero {
 public:

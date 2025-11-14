@@ -6,6 +6,18 @@
 #include <vector>
 #include <string>
 using namespace std;
+/*=========================================================================================================
+                                      Documentacion CRC - ControladorRecetas
+===========================================================================================================
+Clase: 
+    ControladorRecetas
+Responsabilidades:
+    - Proveer una interfaz para crear, modificar, eliminar y buscar recetas.
+Colaboradores:
+    - Inventario
+    - VistaPanadero
+----------------------------------------------------------------------------------------------------------
+*/
 
 class ControladorRecetas {
 private:

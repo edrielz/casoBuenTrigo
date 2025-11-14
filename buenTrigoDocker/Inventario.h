@@ -8,6 +8,27 @@
 #include <string>
 using namespace std;
 
+/*=========================================================================================================
+                                      Documentacion CRC - Inventario
+===========================================================================================================
+Clase: 
+    Inventario
+Responsabilidades:
+    - Gestionar los ingredientes y panes disponibles en el inventario.
+    - Proveer métodos para agregar, eliminar y buscar ingredientes y panes.
+    - Verificar la disponibilidad de ingredientes para una receta específica.
+    - Generar alertas sobre niveles bajos de ingredientes.
+Colaboradores: 
+    -Ingrediente
+    -Pan
+    -ControladorInventario
+    -ControladorProduccion
+    -ControladorRecetas
+    -ControladorReportes
+    -Receta
+----------------------------------------------------------------------------------------------------------
+*/
+
 class Inventario {
 private:
     vector<Ingrediente*> ingredientes;

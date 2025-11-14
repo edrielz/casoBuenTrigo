@@ -7,6 +7,22 @@
 #include <string>
 using namespace std;
 
+
+/*=========================================================================================================
+                                      Documentacion CRC - ControladorInventario
+===========================================================================================================
+Clase: 
+    ControladorInventario
+Responsabilidades:
+    - Gestionar las operaciones relacionadas con el inventario de ingredientes y panes.
+    - Proveer una interfaz para agregar, actualizar, eliminar ingredientes y consultar el inventario.
+    - Generar alertas basadas en los niveles de stock de los ingredientes.
+Colaboradores:
+    - Inventario
+    - VistaEncargadoInventario
+----------------------------------------------------------------------------------------------------------
+*/ 
+
 class ControladorInventario {
 private:
     Inventario* inventario;

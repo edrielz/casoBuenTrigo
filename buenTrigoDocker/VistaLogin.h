@@ -4,6 +4,17 @@
 #include <string>
 #include <tuple>
 using namespace std;
+/*=========================================================================================================
+                                      Documentacion CRC - VistaLogin
+===========================================================================================================
+Clase: 
+    VistaLogin
+Responsabilidades:
+    - Solicitar credenciales de inicio de sesión al usuario.
+Colaboradores:
+    -Ninguno
+----------------------------------------------------------------------------------------------------------
+*/
 
 class VistaLogin {
 public:

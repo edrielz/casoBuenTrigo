@@ -3,6 +3,17 @@
 
 #include <string>
 using namespace std;
+/*=========================================================================================================
+                                      Documentacion CRC - VistaAdministrador
+===========================================================================================================
+Clase: 
+    VistaAdministrador
+Responsabilidades:
+    - Mostrar menús, reportes y mensajes al Administrador.
+Colaboradores:
+    -ControladorReportes
+----------------------------------------------------------------------------------------------------------
+*/
 
 class VistaAdministrador {
 public:

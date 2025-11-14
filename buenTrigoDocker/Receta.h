@@ -8,6 +8,20 @@
 #include <utility>
 using namespace std;
 
+/*=========================================================================================================
+                                      Documentacion CRC - Receta
+===========================================================================================================
+Clase: 
+    Receta
+Responsabilidades:
+    - Permitir agregar, modificar y eliminar ingredientes de la receta.
+    - Calcular las cantidades necesarias de cada ingrediente para una cantidad dada de panes.
+Colaboradores:
+    -Ingrediente
+    -Inventario
+----------------------------------------------------------------------------------------------------------
+*/
+
 class Receta {
 private:
     string nombrePan;

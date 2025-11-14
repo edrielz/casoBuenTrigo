@@ -4,6 +4,20 @@
 #include <string>
 using namespace std;
 
+/*=========================================================================================================
+                                      Documentacion CRC - Ingrediente
+===========================================================================================================
+Clase: 
+    Ingrediente
+Responsabilidades:
+    - Representar un ingrediente en el inventario con sus propiedades como nombre, cantidad, unidad de medida y nivel mínimo.
+    - Proveer métodos para acceder y modificar las propiedades del ingrediente.
+Colaboradores:
+    -Inventario
+    -Receta
+----------------------------------------------------------------------------------------------------------
+*/
+
 class Ingrediente {
 private:
     string nombre;

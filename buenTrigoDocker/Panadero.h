@@ -5,6 +5,19 @@
 #include "ControladorRecetas.h"
 #include "ControladorProduccion.h"
 
+/*=========================================================================================================
+                                      Documentacion CRC - Panadero
+===========================================================================================================
+Clase: 
+    Panadero
+Responsabilidades:
+    - Proveer un menú para realizar operaciones como registrar, modificar y eliminar recetas.
+    - Gestionar la producción de panes y consultar el stock disponible.
+Colaboradores:
+    -Usuario
+----------------------------------------------------------------------------------------------------------
+*/
+
 class Panadero : public Usuario {
 private:
     ControladorRecetas* controladorRecetas;
