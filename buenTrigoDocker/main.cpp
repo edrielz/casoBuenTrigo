@@ -12,6 +12,28 @@
 #include "Receta.h"
 
 using namespace std;
+/*
+
+
+El archivo main contine una funcion que crea los usuarios correspondientes con sus respectivas propiedades, Estos usuarios se crean en la memoria dinamica del programa y se realcionan entre si por el inventario, clase central del programal.
+
+despues va la funcion principal
+ahi se crea una instancia del objeto vistaLogin, este se encarga de pedir el usuario .
+
+Despues se crea el usuario con la funcion crear usuario y los datos que pasa el usuario, em realidad cualquier contraseña sirve siempre y cuando se respete el rol, ( dado que no hay base de datos aun ), y como todos comparten el mismo inventario no importa qeu panadero incia seccion.
+
+
+Hay funciones de librerias que son dificiles de intepretar, pero explciare a continuacion:
+
+1. make_unique crea una instancia real del objeto y la guarda en memoria dinámica. pero sin los peligros de liberar y todo eso , es como hacer un objeto de puntero y luego se lo pasaras a unique_ptr para crear el puntero inteligente
+
+2. unique_ptr es un puntero inteligente de la libreria std talque permite crear punteros sin peligros de memoria, muy util
+
+Apartir de aqui la vista se distribuye entre la vista del Panadero, la vista del encargado, y la vista del administrador
+
+
+
+*/
 
 unique_ptr<Usuario> crearUsuario(
     string tipo, string nombre, string password,

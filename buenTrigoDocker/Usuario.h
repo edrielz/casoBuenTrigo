@@ -31,7 +31,7 @@ public:
     bool login(string password);
     string getNombre();
     string getTipo();
-    virtual void mostrarMenu() = 0;
+    virtual void mostrarMenu() = 0; //  ESTO HACE A LA CLASE UNA ABSTRABTA, QUE NO SE PUEDE INSTANCIAR COMO TAL TIENE QUE SER HEREDADA PARA SER USADA 
 };
 
 #endif
