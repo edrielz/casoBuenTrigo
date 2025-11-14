@@ -31,7 +31,7 @@ Hay funciones de librerias que son dificiles de intepretar, pero explciare a con
 
 Apartir de aqui la vista se distribuye entre la vista del Panadero, la vista del encargado, y la vista del administrador
 
-
+REPOSITORIO DE GITHUB: https://github.com/edrielz/casoBuenTrigo.git
 
 */
 
